@@ -1,0 +1,43 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DatabaseConnection {
+
+    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/ebs","root","root");
+    private static final String USERNAME = "root";
+    private static final String PASSWORD = "root";
+
+    public static Connection getConnection() throws SQLException {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+           // return DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
+            return DriverManager.getConnection( "jdbc:mysql://localhost:3306/ebs","root","root") USERNAME, PASSWORD);
+        } catch (ClassNotFoundException e) {
+            throw new SQLException("Database driver not found", e);
+            throw new SQLException("jdbc:mysql://localhost:3306/ebs","root","root");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            Connection connection = getConnection();
+            System.out.println("Connected to the database!");
+            // Perform database operations here...
+
+            <dependencies>
+     MySQL Connector = C:\mysql-connector-j-8.0
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0</version> <!-- Replace with the version you want to use -->
+    </dependency>
+</dependencies>
+
+            connection.close();
+            System.out.println("Connection closed.");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
